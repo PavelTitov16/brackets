@@ -1,22 +1,22 @@
 module.exports = function check(str, bracketsConfig) {
-  let brArray = str.split('');
-  Stack = [];
+  const brArray = str.split('');
+  const stack = [];
   const brConfig = {};
   bracketsConfig.forEach(bracket => {
     brConfig[bracket[1]] = bracket[0];
   });
   for (let i = 0; i < brArray.length; i++) {
-    if (Stack.length === 0) {
-      Stack.push(brArray[i]);
+    if (stack.length === 0) {
+      stack.push(brArray[i]);
     } else {
-      if (Stack[Stack.length - 1] === brConfig[brArray[i]]) {
-        Stack.pop();
+      if (stack[stack.length - 1] === brConfig[brArray[i]]) {
+        stack.pop();
       } else {
-        Stack.push(brArray[i]);
+        stack.push(brArray[i]);
       }
     }
   }
-  return (Stack.length === 0) ? true : false;
+  return (stack.length === 0) ? true : false;
 }
 
 
